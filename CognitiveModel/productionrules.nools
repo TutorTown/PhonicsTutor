@@ -1,0 +1,546 @@
+import("types.nools");
+
+// var problem = null;
+
+function onLoad(prob_n, prob_w){
+	assert(new Problem(prob_n,prob_w));
+	// playAudioFromText("~" + prob_w);
+	// if(word_pronunciation)
+	// var bb = document.getElementById("backButton");
+	// bb.style.opacity = 0.5;
+}
+
+function assignImage(id, dft, clk){
+	var el = document.getElementById(id);
+	el.setAttribute("style", "background-size: cover; background-image: url(Assets/" + dft+ "); outline:none;" );
+	el.setAttribute("data-ctat-image-default", "Assets/" + dft);
+	el.setAttribute("data-ctat-image-clicked", "Assets/" + clk);
+
+}
+
+function startJumpTween(elm, jumpHeight=30,inflation=1.05){
+	var orgTop = elm.offsetTop;
+	var orgWidth = elm.offsetWidth;
+	var orgHeight = elm.offsetHeight;
+	elm.style.top =  orgTop + "px";
+	elm.style.width =  orgWidth + "px";
+	elm.style.height =  orgHeight + "px";
+	var jumpHeight = 30;
+	var inflation = 1.05;
+	var tw = createjs.Tween.get(elm, {loop: true})
+			.to({top:orgTop - jumpHeight, width:orgWidth * inflation,height:orgHeight * inflation}
+				, 500, createjs.Ease.quadOut)
+			.to({top:orgTop,			  width:orgWidth,	   height:orgHeight}  	 
+				, 500, createjs.Ease.bounceOut)
+			.wait(1000);
+	return tw;
+}
+
+function stopTween(elm){
+	createjs.Tween.removeTweens(elm);
+}
+
+function moveTo(elm,t, l, delay=500, speed=500,op=1.0){
+	var orgLeft = elm.offsetLeft;
+	var orgTop = elm.offsetTop;
+	elm.style.top =  orgTop + "px";
+	elm.style.left =  orgLeft + "px";
+	elm.style.opacity = elm.style.opactity || 1 ;
+	var tw = createjs.Tween.get(elm, {loop: false})
+		.wait(delay)
+		.to({top:t, left:l, opacity:op}, speed, createjs.Ease.quadOut);
+
+}
+
+
+function visualLength(str)
+{
+    var ruler = document.getElementById("ruler");
+    ruler.innerHTML = str;
+    return ruler.offsetWidth;
+}
+
+// function getNext
+//--------------------------------------------------------------------------------------------
+//
+// Initializing working memory
+//
+// This rule does not require further work from you.
+//
+//--------------------------------------------------------------------------------------------
+rule bootstrap {
+	when {
+		b: Boolean b === true from true;
+	}
+	then {
+		loadPhones();    
+    	loadGraphemes();
+    	loadDefaultPhones();
+
+
+
+
+
+    	// console.log(":WPPWPWPWPW",word_pronunciation);
+		if(typeof word_pronunciation == "undefined"){
+    		loadPhonetics();
+		}else{
+			phonetics_dict = {};
+			phonetics_dict[problem_word.toUpperCase()] = word_pronunciation;
+			signalLoad();
+		}
+
+		document.addEventListener("PHONICS_ASSETS_LOADED", function(){onLoad(problem_name,problem_word);});
+		// console.log("IT WORKDS");
+
+		/* -------- LETTER BUTTONS ----------  */
+
+		for (i = 0; i < 26; i++) {
+			var chr = String.fromCharCode(97 + i).toUpperCase();
+			var name = "letter" + chr.toUpperCase();
+			console.log(chr);
+			assert(new letterElement(name, chr));
+			assignImage(name, chr + ".jpg", chr + "_pressed.jpg");
+		}
+
+		/* -------- IMAGE SOUND ----------  */
+
+		assignImage("imageSound", "soundicon.png", "soundicon.png");
+		assert(new interfaceElement("imageSound",null));
+
+		
+		/* -------- WORD SOUND ----------  */
+
+		assignImage("wordSound", "soundicon.png", "soundicon.png");
+		assert(new interfaceElement("wordSound",null));
+
+
+
+		/* -------- BACK BUTTOM ----------  */
+		
+		assignImage("backButton", "backbutton.png", "backbutton.png");
+		assert(new interfaceElement("backButton",null));
+
+
+		/* -------- TYPED LETTERS ----------  */
+		var tl = document.getElementById("typed_letters");
+		tl.style.fontSize = "400%";
+		// tl.style.fontFamily = "monospace";
+		// tl.style.font = "Courier";
+		tl.setAttribute("data-ctat-show-feedback","false");
+		tl.setAttribute("data-ctat-disable-on-correct","false");
+
+		assert(new interfaceElement("typed_letters",null));
+		
+
+		/* -------- IMAGE PROMPT ----------  */
+
+		try{
+			var ip = document.getElementById("imagePrompt");
+			var im = ip.firstElementChild;
+			im.setAttribute("src", "Assets/" + problem_word +".jpg");
+		}catch(error){
+			console.log(error);
+			alert("Cannot find image for " + problem_word);
+		}
+
+		
+		// canvas = document.getElementById("background-initial");
+		// stage = new createjs.Stage(canvas);
+		// stage.enableDOMEvents(true);
+		
+		createjs.CSSPlugin.install();
+		var elm = document.getElementById("imageSound");
+		console.log("STYLE");
+		// elm.style.top = "20px";
+		console.log(elm.style.top,elm.style.width);
+		// elm.classList.remove(elm.getAttribute("data-silex-id") );
+		console.log(elm.style.top,elm.style.width);
+
+
+		var orgTop = elm.offsetTop;
+		var orgWidth = elm.offsetWidth;
+		var orgHeight = elm.offsetHeight;
+		elm.style.top =  orgTop + "px";
+		elm.style.width =  orgWidth + "px";
+		elm.style.height =  orgHeight + "px";
+		var jumpHeight = 30;
+		var inflation = 1.05;
+		var tw = createjs.Tween.get(elm, {loop: true})
+				.to({top:orgTop - jumpHeight, width:orgWidth * inflation,height:orgHeight * inflation}
+					, 500, createjs.Ease.quadOut)
+				.to({top:orgTop,			  width:orgWidth,	   height:orgHeight}  	 
+					, 500, createjs.Ease.bounceOut)
+				.wait(1000);
+		// createjs.Ticker.timingMode = createjs.Ticker.RAF;
+
+		// var tw = createjs.Tween.get(elm).to({x:100}, 500).start();
+		
+		// function animate(time) {
+		// 	requestAnimationFrame(animate);
+		// 	tw.update(time);
+		// }
+		// requestAnimationFrame(animate);
+		// createjs.Tween.get(elm, { loop: true })
+		//   .to({ x: 400 }, 1000, createjs.Ease.getPowInOut(4))
+		//   .to({ alpha: 0, y: 175 }, 500, createjs.Ease.getPowInOut(2))
+		//   .to({ alpha: 0, y: 225 }, 100)
+		//   .to({ alpha: 1, y: 200 }, 500, createjs.Ease.getPowInOut(2))
+		//   .to({ x: 100 }, 800, createjs.Ease.getPowInOut(2));
+
+		// createjs.Ticker.setFPS(60);
+		// createjs.Ticker.addEventListener("tick", stage);
+		
+		// ip.setAttribute("style", "background-size: cover; background-image: url(Assets/" 
+		// 	+ problem_word +".jpg");
+		
+		// im.setAttribute("width", 500);
+		// im.setAttribute("height", 300);
+		// console.log("THISISHTISHTISHTI");
+		// }catch (error){
+		// 	console.log(error);
+		// }
+		setProblemAttribute("use_backtracking", true);
+		halt();
+	}
+}
+
+rule LetterPress{
+	when {
+		p: Problem p.subgoal === "enter_letter";
+		le: letterElement {name:letter_name, value:letter_value};
+		ie: interfaceElement ie.name === "typed_letters" 
+			&& (!ie.value || ie.value.length < p.maxLetters) {value:already_typed};
+		not(sp: SpellCheck);
+	}then{
+		if(checkSAI({selection: letter_name, action: "ButtonPressed", input: "don't_care"})) {
+			console.log("Pressed", letter_name);
+
+			console.log(default_phones_dict[letter_value.toUpperCase()], letter_value);
+
+
+			if(already_typed === null) already_typed = "";
+			var new_value = already_typed.concat(letter_value).toUpperCase();
+			assert(new TPA("typed_letters", "UpdateTextField", new_value));
+			// assert(new StudentValues("typed_letters", "UpdateTextField", new_value));
+			modify(ie, "value", new_value);
+			assert(new SpellCheck(new_value));
+
+			modify(p, "subgoal", "handle_input");
+			// var ip = document.getElementById("image_prompt");
+			// ip.setAttribute("style", "background-size: cover; background-image: url(Assets/" 
+			// 	+ letter_value.toUpperCase() +".jpg");
+			// halt();
+		}else{
+			backtrack();	
+		}
+		// console.log("dummy");
+		// halt();
+	}
+}
+
+rule TooLong{
+	when {
+		p: Problem p.subgoal === "enter_letter";
+		le: letterElement {name:letter_name, value:letter_value};
+		ie: interfaceElement ie.name === "typed_letters" 
+			&& ie.value && ie.value.length >= p.maxLetters {value:already_typed};
+		not(sp: SpellCheck);
+	}then{
+		if(checkSAI({selection: letter_name, action: "ButtonPressed", input: "don't_care"})) {
+			errorSound.play();
+		}else{
+			backtrack();	
+		}
+		// console.log("dummy");
+		// halt();
+	}
+}
+
+rule PressBackButton{
+	when {
+		p: Problem p.subgoal === "enter_letter";
+		// le: letterElement {name:letter_name, value:letter_value};
+		tl: interfaceElement tl.name === "typed_letters" {value:already_typed};
+		ie: interfaceElement ie.name === "backButton";
+		not(sp: SpellCheck);
+	}then{
+		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
+
+			if(already_typed === null) already_typed = "";
+			var new_value = already_typed.slice(0,-1);
+
+			console.log("DFDD FIE", new_value);
+			assert(new TPA("typed_letters", "UpdateTextField", new_value));
+			// assert(new StudentValues("typed_letters", "UpdateTextField", new_value));
+			modify(tl, "value", new_value);
+			assert(new SpellCheck(new_value));
+			modify(p, "subgoal", "handle_input");
+			// var ip = document.getElementById("image_prompt");
+			// ip.setAttribute("style", "background-size: cover; background-image: url(Assets/" 
+			// 	+ letter_value.toUpperCase() +".jpg");
+			// halt();
+		}else{
+			backtrack();	
+		}
+		// console.log("dummy");
+		// halt();
+	}
+}
+
+rule InputText{
+	when {
+		p: Problem p.subgoal === "enter_letter" {currSpelling:cs};
+		ie: interfaceElement ie.name === "typed_letters" {value:already_typed};
+		sai: StudentValues sai.selection === "typed_letters" && sai.input != cs;
+		
+	}then{
+		console.log(sai.input);
+
+		modify(ie, "value", sai.input);
+		modify(p, "subgoal", "handle_input");
+		assert(new SpellCheck(sai.input));
+		
+		// halt();
+	}
+}
+
+// rule
+
+rule checkSpell{
+	when{
+		p: Problem p.subgoal === "handle_input" {currSpelling:cs, currPronunciation:cp};
+		ie: interfaceElement ie.name === "typed_letters" && ie.value != cs;
+		sp: SpellCheck;
+	}then{
+
+		var out = firstError(p.word,sp.spelling,true);
+		var out_text = (out[0] ? "Correct" : "Incorrect " +
+			 out[1].toString() + ", " + out[2].toString()) + ": " + out[3].toString();
+		console.log(p.word,sp.spelling,out_text);
+
+		var new_phones = out[3].length - cp.length;
+		if(new_phones  > 0){
+			playAudioFromText(out[3].slice(-new_phones));
+		}
+		modify(p, "currSpelling", sp.spelling);
+		modify(p, "currPronunciation", out[3]);
+		modify(p, "currError", out);
+		// modify(sp, "firstError", out);
+		// modify(sp, "phase", 2);
+
+		// console.log(bo);
+		// if(typeof bo != "undefined"){
+		// 	console.log("IT EXISTS");
+		// }else{
+		// 	console.log("IT DOES NOT EXISTS");
+		// }
+		// console.log("VISUAL LENGTH", visualLength(sp.spelling), sp.spelling);
+		console.log("MOOO");
+		retract(sp);
+		
+		assert(new inputResponse(sp.spelling, out));
+		// backtrack();
+		// halt();
+	}
+}
+
+rule moveBottomOut{
+	salience : 1;
+	when{
+		ir: inputResponse {input:inp};
+		bo: interfaceElement bo.name === "bottomOut";
+	}then{
+		console.log("SFSDF");
+		var elm = document.getElementById("bottomOut");
+		var tl = document.getElementById("typed_letters");
+		var letterLength = visualLength(inp) * 4;
+		moveTo(elm, tl.offsetTop - (elm.offsetHeight + 10), tl.offsetLeft + letterLength + 15, 0,250);
+
+		// backtrack();
+		// var offset = inp.length * 
+	}
+}
+
+rule moveBackButton{
+	salience : 0;
+	when{
+		ir: inputResponse {input:inp};
+		bo: interfaceElement bo.name === "backButton";
+	}then{
+		console.log("BACK BUTTON");
+		var elm = document.getElementById("backButton");
+		var tl = document.getElementById("typed_letters");
+		var letterLength = visualLength(inp) * 4;
+		if(letterLength == 0){
+			// top: 240px; left: 520px
+			moveTo(elm, 240, tl.offsetLeft, 0,250,0);
+		}else{
+			var left = tl.offsetLeft + letterLength - elm.offsetWidth + 15;
+			left = Math.max(left, tl.offsetLeft);
+			moveTo(elm, tl.offsetTop + tl.offsetHeight, left, 0,250);	
+		}
+		
+		// backtrack();
+		// var offset = inp.length * 
+	}
+}
+
+rule doneWithSpellCheck{
+	salience : -1;
+	when{
+		p: Problem p.subgoal === "handle_input";
+		ir: inputResponse;
+	}then{
+
+		console.log("KILLLED IT");
+		modify(p, "subgoal", "enter_letter");
+		retract(ir);
+		halt();
+		// var offset = inp.length * 
+	}
+}
+
+rule pressImageSound{
+	when{
+		p: Problem {imageSoundPressed:imSP};
+		ie: interfaceElement ie.name === "imageSound";
+	}then{
+		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
+			console.log("FIRE TO COMPLE");
+			// playAudioFromText("~table");
+			if(!imSP){
+				modify(p, "imageSoundPressed", true);
+				assert(new ShowNextHint(2));	
+			}
+		}else{
+			backtrack();	
+		}
+	}
+}
+
+rule initImageSoundOut{
+	when{
+		nh: ShowNextHint nh.level == 2;
+		is: interfaceElement is.name === "imageSound";
+		not(ie: interfaceElement ie.name === "imageSoundOut");
+	}then{
+		console.log("IINININI");
+		assignImage("imageSoundOut", "soundouticon.png", "soundouticon.png");
+		assert(new interfaceElement("imageSoundOut",null));
+		var elm = document.getElementById("imageSoundOut");
+		var isElm = document.getElementById("imageSound");
+		elm.style.left =  isElm.offsetLeft + "px";
+		var tw = createjs.Tween.get(elm, {loop: false})
+			.wait(500)
+			.to({left:320}
+				, 500, createjs.Ease.quadOut)
+			.wait(1000);
+		retract(nh);
+		halt();
+	}
+}
+
+rule pressImageSoundOut{
+	when{
+		p: Problem {imageSoundOutPressed:imSP, word:word};
+		ie: interfaceElement ie.name === "imageSoundOut";
+	}then{
+		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
+			console.log("FIRE TO COMPLE");
+			playAudioFromText("~" + word);
+			if(!imSP){
+				modify(p, "imageSoundOutPressed", true);
+				assert(new ShowNextHint(3));	
+			}
+		}else{
+			backtrack();	
+		}
+	}
+}
+
+rule initBottomOutHint{
+	when{
+		nh: ShowNextHint nh.level == 3;
+		is: interfaceElement is.name === "imageSoundOut";
+		tl: interfaceElement tl.name === "typed_letters";
+		not(ie: interfaceElement ie.name === "bottomOut");
+	}then{
+		console.log("BOTTOMOUT");
+		assignImage("bottomOut", "questionicon.png", "questionicon.png");
+		assert(new interfaceElement("bottomOut",null));
+		var elm = document.getElementById("bottomOut");
+		var isElm = document.getElementById("imageSoundOut");
+		elm.style.left = isElm.offsetLeft + "px";
+		var t = isElm.offsetTop + (isElm.offsetHeight - elm.offsetHeight) *.5 ;
+		elm.style.top = t + "px";
+
+		// var tl_e = document.getElementById("typed_letters");
+		// var letterLength = visualLength(tl.value) * 4;
+		// var delay = 500;
+
+		// moveTo(elm, t, 260,delay);
+
+		var tl_e = document.getElementById("typed_letters");
+		var letterLength = visualLength(tl.value) * 4;
+		moveTo(elm, tl_e.offsetTop - (elm.offsetHeight + 10), tl_e.offsetLeft + letterLength + 15);
+		// setTimeout(function (){
+			
+		// } ,delay);
+		// moveTo(elm, tl_e.offsetTop - (elm.offsetHeight + 10), tl.offsetLeft + letterLength + 15);
+		// moveTo(elm,  , letterLength)
+		retract(nh);
+		halt();
+	}
+}
+
+rule pressBottomOut{
+	when{
+		p: Problem;
+		ie: interfaceElement ie.name === "bottomOut";
+	}then{
+		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
+			// console.log("FIRE TO COMPLE");
+			// playAudioFromText("~table");
+			console.log(p.currError);
+			// if(typeof p.currError == "undefined"){
+				// console.log("OK SO FAR", 0,0);
+			// }else{
+				var err = p.currError;
+				if(!err[0]){
+					console.log(err[3].length);
+					if(err[2] < err[3].length){
+						console.log("MISSPELLED", err[2],err[3].length);
+						console.log("First Bad Letter is", p.currSpelling[err[1]]);
+					}else{
+						console.log("OK SO FAR", err[2],err[3].length);
+						console.log("Next is", phonetics_dict[p.word.toUpperCase()][err[2]]);
+					}	
+				}else{
+					console.log("DONE!");
+				}
+			// }
+			
+			
+			
+		}else{
+			backtrack();	
+		}
+	}
+}
+
+
+rule pressWordSound{
+	when{
+		p: Problem p.currPronunciation.length > 0 {currPronunciation:pronunciation};
+		ie: interfaceElement ie.name === "wordSound";
+	}then{
+		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
+			console.log("FIRE TO COMPLE");
+			playAudioFromText(pronunciation);
+			
+		}
+		// backtrack();
+	}
+
+}

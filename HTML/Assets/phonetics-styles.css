@@ -1,0 +1,76 @@
+
+
+        #ruler { visibility: hidden; white-space: nowrap; }
+        .body-initial {background-color: rgb(255, 255, 255);
+        }
+        .soundOutClass1 {top: 240px; left: 320px; height: 84px; width: 84px;
+        }
+        .bottomOutClass {top: 240px; left: 320px; height: 40px; width: 40px;
+        }
+        .backButtonClass {top: 240px; left: 520px; height: 80px; width: 80px; opacity : 0.0;
+        }
+        .silex-id-1543445154904-0 {top: 40px; left: 40px; height: 260px; width: 400px; background-color: rgb(255, 255, 255);
+        }
+        .silex-id-1543428486340-18 {top: 40px; left: 40px; height: 260px; width: 400px; background-color: rgb(255, 255, 255);
+        }
+        .silex-id-1543427984525-3 {top: 240px; left: 420px; height: 84px; width: 84px;
+        }
+        .silex-id-1543427953548-2 {top: 120px; left: 520px; height: 80px; width: 440px;
+        }
+        .silex-id-1543427988819-4 {top: 180px; left: 900px; height: 84px; width: 84px;
+        }
+        .silex-id-1543428131680-5 {top: 380px; left: 40px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428374527-6 {top: 380px; left: 200px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428378449-7 {top: 380px; left: 360px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428380812-8 {top: 380px; left: 520px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428382936-9 {top: 380px; left: 680px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428388469-10 {top: 380px; left: 840px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428401003-12 {top: 460px; left: 40px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428401007-13 {top: 460px; left: 200px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428401013-14 {top: 460px; left: 360px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428401019-15 {top: 460px; left: 520px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428401025-16 {top: 460px; left: 680px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428401030-17 {top: 460px; left: 840px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564143-19 {top: 540px; left: 42px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564158-20 {top: 540px; left: 200px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564168-21 {top: 540px; left: 362px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564193-23 {top: 540px; left: 682px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564218-25 {top: 620px; left: 40px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564231-26 {top: 620px; left: 202px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564244-27 {top: 620px; left: 362px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564259-28 {top: 620px; left: 520px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564274-29 {top: 620px; left: 682px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564286-30 {top: 620px; left: 842px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428582704-31 {top: 700px; left: 40px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428582714-32 {top: 700px; left: 200px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564206-24 {top: 540px; left: 840px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564181-22 {top: 540px; left: 520px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .background-initial {background-color: rgb(204, 195, 255); top: 5px; left: 154px; width: 1024px; height: 786px;
+        }
+    

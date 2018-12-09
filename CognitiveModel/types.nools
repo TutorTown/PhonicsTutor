@@ -1,0 +1,93 @@
+
+define Problem {
+	name: null,
+	subgoal: null,
+	word: null,
+	loaded: false,
+	currPronunciation: [],
+	currError: [false,0,0,[]],
+	currSpelling: "",
+	imageSoundPressed: false,
+	imageSoundOutPressed: false,
+	maxLetters: 8,
+	constructor: function(n,w) {
+		this.subgoal = 'enter_letter';
+		this.name = n;
+		this.word = w;
+	}
+}
+
+define hopRequest {
+	elmt: null,
+	timeStart: null,
+	constructor: function(n,t) {
+		this.elmt = n;
+		this.timeStart = t;
+	}
+}
+
+define inputResponse {
+	input: null,
+	firstError: null,
+	constructor: function(n, f) {
+		this.input = n;
+		this.firstError = f;
+	}
+}
+
+
+define ShowNextHint {
+	level: 1,
+	constructor: function(n) {
+		this.level = n;
+	}
+}
+
+define SpellCheck {
+	spelling: null,	
+	constructor: function(s) {
+		this.spelling = s;
+	}
+}
+
+
+define letterElement {
+	name: null,
+	value: null,
+	constructor: function(n, v) {
+		this.name = n;
+		this.value = v;
+	}
+}
+
+define interfaceElement {
+	name: null,
+	value: null,
+	constructor: function(n, v) {
+		this.name = n;
+		this.value = v;
+	}
+}
+
+define StudentValues {
+	selection: null,
+	action: null,
+	input: null,
+	constructor: function(s, a, i) {
+		this.selection = s;
+		this.action = a;
+		this.input = i;
+	}
+}
+
+define TPA {
+	selection: null,
+	action: null,
+	input: null,
+	constructor: function(s, a, i) {
+		this.selection = s;
+		this.action = a;
+		this.input = i;
+	}
+}
+

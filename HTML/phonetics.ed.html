@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- generator meta tag -->
+    <!-- leave this for stats and Silex version check -->
+    <meta name="generator" content="Silex v2.2.5">
+    <!-- End of generator meta tag -->
+    <!--CSS-->
+    <link data-silex-static="true" href="css/silex/normalize.css" rel="stylesheet">
+    <link data-silex-static="true" href="css/silex/front-end.css" rel="stylesheet">
+    <link data-silex-static="true" href="https://cdn.ctat.cs.cmu.edu/releases/latest/CTAT.css" rel="stylesheet">
+    <!--JS-->
+    <script data-silex-static="true" type="text/javascript" src="js/jquery.js"></script>
+    <script data-silex-static="true" type="text/javascript" src="js/jquery-ui.js"></script>
+    <script data-silex-static="true" type="text/javascript" src="https://cdn.ctat.cs.cmu.edu/releases/latest/ctatloader.js"></script>
+    <script data-silex-static="true" type="text/javascript" src="js/ctat/ctat_editor.min.js"></script>
+    <script type="text/javascript" src="js/silex/mut_observer.js"></script>
+    <script type="text/javascript" src="js/silex/pageable.js"></script>
+    <script type="text/javascript" src="js/silex/front-end.js"></script>
+
+    <style class="silex-inline-styles" type="text/css">
+        .body-initial {background-color: rgb(255, 255, 255);
+        }
+        .silex-id-1543428486340-18 {top: 40px; left: 40px; height: 260px; width: 400px; background-color: rgb(255, 255, 255);
+        }
+        .silex-id-1543427984525-3 {top: 240px; left: 420px; height: 84px; width: 84px;
+        }
+        .silex-id-1543427953548-2 {top: 120px; left: 520px; height: 80px; width: 440px;
+        }
+        .silex-id-1543427988819-4 {top: 180px; left: 900px; height: 84px; width: 84px;
+        }
+        .silex-id-1543428131680-5 {top: 380px; left: 40px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428374527-6 {top: 380px; left: 200px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428378449-7 {top: 380px; left: 360px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428380812-8 {top: 380px; left: 520px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428382936-9 {top: 380px; left: 680px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428388469-10 {top: 380px; left: 840px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428401003-12 {top: 460px; left: 40px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428401007-13 {top: 460px; left: 200px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428401013-14 {top: 460px; left: 360px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428401019-15 {top: 460px; left: 520px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428401025-16 {top: 460px; left: 680px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428401030-17 {top: 460px; left: 840px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564143-19 {top: 540px; left: 42px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564158-20 {top: 540px; left: 200px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564168-21 {top: 540px; left: 362px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564193-23 {top: 540px; left: 682px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564218-25 {top: 620px; left: 40px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564231-26 {top: 620px; left: 202px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564244-27 {top: 620px; left: 362px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564259-28 {top: 620px; left: 520px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564274-29 {top: 620px; left: 682px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564286-30 {top: 620px; left: 842px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428582704-31 {top: 700px; left: 40px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428582714-32 {top: 700px; left: 200px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564206-24 {top: 540px; left: 840px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .silex-id-1543428564181-22 {top: 540px; left: 520px; height: 64px; width: 140px; border-width: 5px; border-style: solid; border-radius: 11px;
+        }
+        .background-initial {background-color: rgb(204, 195, 255); top: 5px; left: 154px; width: 1024px; height: 786px;
+        }
+    </style>
+
+
+
+    <style type="text/css" class="silex-style"></style>
+    <script type="text/notjavascript" class="silex-script"></script>
+    <meta name="interface-id" content="phonetics">
+
+    <meta name="asset-map" content="{&quot;blob:http://cdn.ctat.cs.cmu.edu/9bc23f49-bc38-41e8-9a7b-4007b763f47f&quot;:{&quot;name&quot;:&quot;C.jpg&quot;,&quot;id&quot;:&quot;1JztCPxFP4YzlLu_v94k43F5Joic1Omsp&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/C.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/53fec9a0-34e9-4b93-8001-1799edca1492&quot;:{&quot;name&quot;:&quot;D_pressed.jpg&quot;,&quot;id&quot;:&quot;1_jMiiNruD8bZS4tiTRQ5Y-stehdzSsn-&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/D_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/acd4d730-a419-4b21-84cf-7388e704e634&quot;:{&quot;name&quot;:&quot;E.jpg&quot;,&quot;id&quot;:&quot;1uNZyuAqG_mL4Ly6SBHwADaMIYmM11D6N&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/E.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/a2cb195d-3831-4230-bbff-7f92e3acdcdc&quot;:{&quot;name&quot;:&quot;E_pressed.jpg&quot;,&quot;id&quot;:&quot;1CNLuiRrXwM249qK4jPSVHpq0FexTbX-V&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/E_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/74858f6b-de8c-4b40-b404-76482fd81cc2&quot;:{&quot;name&quot;:&quot;C_pressed.jpg&quot;,&quot;id&quot;:&quot;1FLeupw28SwRqh03-vQsBNv5PcG6G3rhK&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/C_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/60019e3a-f4ce-4b29-8875-0f904dbd6988&quot;:{&quot;name&quot;:&quot;F_pressed.jpg&quot;,&quot;id&quot;:&quot;1K-4U8xlO9c2HGkt4s2HlyFfsgoH12hIZ&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/F_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/262a047b-9141-4865-92ac-93ee4ef27a05&quot;:{&quot;name&quot;:&quot;D.jpg&quot;,&quot;id&quot;:&quot;1vLWAlIuWBBUsBHK36Y1_bE2xJm3P1US5&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/D.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/908b05e1-8a58-4441-a565-fa20e0394086&quot;:{&quot;name&quot;:&quot;B_pressed.jpg&quot;,&quot;id&quot;:&quot;1rdhgyu6D-iJ078qUKVqCjCZsxL5pGKvP&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/B_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/7ac33a5e-8dfe-44b0-b9ed-80dba74eed62&quot;:{&quot;name&quot;:&quot;F.jpg&quot;,&quot;id&quot;:&quot;1qvGs1CcNjtxTEiM-JIEwFQoK5KkXayOL&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/F.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/282530b2-4fcc-4303-a2ca-7ef5f99b6e7d&quot;:{&quot;name&quot;:&quot;G.jpg&quot;,&quot;id&quot;:&quot;1-mNeTqBk4zNlnM2vC8C_oC8UPwN6Dn5H&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/G.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/9470acec-5bea-4be9-9af3-7c837b8af1e3&quot;:{&quot;name&quot;:&quot;I_pressed.jpg&quot;,&quot;id&quot;:&quot;1lfgS1t-JOZKAmNwEiczeuuAxP3kWFavq&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/I_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/78190e42-4d8f-401c-b2a5-f6cf419192d5&quot;:{&quot;name&quot;:&quot;G_pressed.jpg&quot;,&quot;id&quot;:&quot;1z8oxTsVTHDQ8WRcGkZ5epzk4YrMW_7Op&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/G_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/b93c5f69-7bb0-45d9-9aa7-2eda384b4679&quot;:{&quot;name&quot;:&quot;J_pressed.jpg&quot;,&quot;id&quot;:&quot;1TfhLwU3euzoxelN04xpLcQgs57AjVNFm&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/J_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/aa3fbfe4-c577-45b0-8636-eb3ada0952d9&quot;:{&quot;name&quot;:&quot;J.jpg&quot;,&quot;id&quot;:&quot;1y5cLenq9tRvkOVUcfMImYW99ua6Izf2K&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/J.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/860f18cb-b13b-4bc4-9585-2de631a1679d&quot;:{&quot;name&quot;:&quot;I.jpg&quot;,&quot;id&quot;:&quot;1bG9-PZgUhpgTLxDQKqymTeiZSaAkdMkC&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/I.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/4498ad55-bca9-4b6c-b53a-cac4a5403d4f&quot;:{&quot;name&quot;:&quot;H_pressed.jpg&quot;,&quot;id&quot;:&quot;1i-dbYu9ELuroOZ8S2TZ9l-IruB0uCwOY&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/H_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/c2bcdf2c-85fb-4c0b-a7ba-2423c5b9ea64&quot;:{&quot;name&quot;:&quot;H.jpg&quot;,&quot;id&quot;:&quot;1ZUOsRhrbdIvwCnL00l-OBRzH1ZVsayB9&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/H.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/8807e44b-8068-4f8d-8fdf-0fd606f7673d&quot;:{&quot;name&quot;:&quot;K_pressed.jpg&quot;,&quot;id&quot;:&quot;1i4fNuqb2-tZo_WpJE07GxOXM0wASbaaz&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/K_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/a9df42bb-5170-4222-979d-06d5aad265e9&quot;:{&quot;name&quot;:&quot;K.jpg&quot;,&quot;id&quot;:&quot;1yCDmapFAtiw_x2UOU9GpuwpPtk1W7QiV&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/K.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/ad25c87e-90ac-46e9-80c5-9e2459ca93ec&quot;:{&quot;name&quot;:&quot;L.jpg&quot;,&quot;id&quot;:&quot;1-g5HyiSZb4dYYHvDyY88M_qCRgcVoy2a&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/L.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/10d1cb27-a3ae-4c15-b690-817772eb30d3&quot;:{&quot;name&quot;:&quot;L_pressed.jpg&quot;,&quot;id&quot;:&quot;1IullrUXagqLDORkrcd_gbNcaqEEUuxRM&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/L_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/94ed4ace-0703-4a92-8087-01538c4bfbfa&quot;:{&quot;name&quot;:&quot;M.jpg&quot;,&quot;id&quot;:&quot;1ykggW-74-_fXPwFMnxjEz0hH3tr1nWAa&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/M.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/68641a49-3f1b-44f6-87a5-5c93d95a5732&quot;:{&quot;name&quot;:&quot;M_pressed.jpg&quot;,&quot;id&quot;:&quot;18R_5TmXZzpw-g1jKU9iAPGTGJJudZkJ5&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/M_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/c78ee497-0346-4e41-8ff2-72b341a6d357&quot;:{&quot;name&quot;:&quot;N.jpg&quot;,&quot;id&quot;:&quot;1nR0FAGiVepaftJzhYzhorWL-YDdddGZw&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/N.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/16080bb3-3821-42f8-a15b-f7208d010ed9&quot;:{&quot;name&quot;:&quot;N_pressed.jpg&quot;,&quot;id&quot;:&quot;1K3Lp-b5Q9RzLuBP3fwLigFV5xBw-roNg&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/N_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/397836b3-60e5-49a1-8849-88ec6731b9a2&quot;:{&quot;name&quot;:&quot;O.jpg&quot;,&quot;id&quot;:&quot;1KtPnjl1B5kkPtFv09rydMRE2Csc0PPfr&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/O.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/9d702a07-a193-426f-ae05-6e2566bfe32d&quot;:{&quot;name&quot;:&quot;O_pressed.jpg&quot;,&quot;id&quot;:&quot;1GXQPmipFz2_7dcosRr9OFCEfFrPIk30G&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/O_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/385cc153-5793-44e5-b61b-74cdf5684b63&quot;:{&quot;name&quot;:&quot;P.jpg&quot;,&quot;id&quot;:&quot;1ke_r7BRTLJxrQhNYQUoBqhrxZEqh8WOU&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/P.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/d545db2a-6a6c-481e-bc37-56be8e8bb1dc&quot;:{&quot;name&quot;:&quot;P_pressed.jpg&quot;,&quot;id&quot;:&quot;1WXWtNp0MAKPsjrGabCNmQslJ4GJOTe0m&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/P_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/6604a1e4-39db-4d42-969f-1df39a763157&quot;:{&quot;name&quot;:&quot;R.jpg&quot;,&quot;id&quot;:&quot;1SR50vnW2T9grEHKXG2HSiI6H1bhFWt6S&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/R.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/f9ffcedf-8d62-4f4e-b2ff-8c15e4633c30&quot;:{&quot;name&quot;:&quot;Q_pressed.jpg&quot;,&quot;id&quot;:&quot;1Ef4tekuQhMlns5ThOKLRPDQzI1yGs6pU&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/Q_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/4c9aa959-102c-4cd9-85ee-3075ce01e67d&quot;:{&quot;name&quot;:&quot;R_pressed.jpg&quot;,&quot;id&quot;:&quot;17dkhRKQQiFtdTbBf-SzLWXh3IOFLDI7J&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/R_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/f93a8741-4955-48d0-a2ae-0e0e7c7a5aa7&quot;:{&quot;name&quot;:&quot;Q.jpg&quot;,&quot;id&quot;:&quot;1D117jsb8ZxaAK64bZVoOPOMbQ-yjfhtP&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/Q.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/30ea7240-d9c4-48d6-b2d5-4a420adb74ab&quot;:{&quot;name&quot;:&quot;S_pressed.jpg&quot;,&quot;id&quot;:&quot;1LQavSbGle-BcOSUXbyGxrtlRUM1YHFRj&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/S_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/c1210039-e763-4d1a-9b56-cf3998734140&quot;:{&quot;name&quot;:&quot;S.jpg&quot;,&quot;id&quot;:&quot;1ns1FVPlPsvvgx0iVnsG9fXGsus9nLt3z&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/S.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/c1c1c415-841e-4fc5-b4e8-1c8f5aadf718&quot;:{&quot;name&quot;:&quot;T.jpg&quot;,&quot;id&quot;:&quot;16Av8Qren5nU1GAQKO13oJX4FXxlgQ3BP&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/T.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/b0eca847-e032-450a-9346-8804168c9b4c&quot;:{&quot;name&quot;:&quot;U_pressed.jpg&quot;,&quot;id&quot;:&quot;1vcfJdtPRDudzTKiQ6rej0jtpTSYc1oD8&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/U_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/c6afbc2c-5227-4d9a-95b7-c757ccbecf62&quot;:{&quot;name&quot;:&quot;U.jpg&quot;,&quot;id&quot;:&quot;1dD6Nia4cbWs36Pp14o11VZ8tIQ51-oW_&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/U.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/7815aa7b-4f54-4608-a76d-4d648f00b4ba&quot;:{&quot;name&quot;:&quot;V.jpg&quot;,&quot;id&quot;:&quot;16SlDWS-niHW5uk_SSOCzRYfhDwaKMfIG&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/V.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/b50cbc21-aa22-4187-a705-697a57925248&quot;:{&quot;name&quot;:&quot;V_pressed.jpg&quot;,&quot;id&quot;:&quot;1OsWx5XIBKEYsu7YUpHtts3DvSH6NoPMZ&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/V_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/31b4e50e-e28e-4cc6-8f66-05c7460aed8e&quot;:{&quot;name&quot;:&quot;W.jpg&quot;,&quot;id&quot;:&quot;1ZIzrHAtnRb1m9bxnESWa9rvZXgFs6M9I&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/W.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/bb53e588-37e7-4beb-8cfa-219822a07e66&quot;:{&quot;name&quot;:&quot;W_pressed.jpg&quot;,&quot;id&quot;:&quot;1fck93dZ4uxRLcpxeJnHOlW84nxqBqupf&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/W_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/19403f34-f1ce-4cb1-b54a-58998f6aade2&quot;:{&quot;name&quot;:&quot;X.jpg&quot;,&quot;id&quot;:&quot;1JUExnaRFInq3Quk8dXbxj3OxzN9796NU&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/X.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/04472ba8-f33a-40fa-8978-26d0b133f4d9&quot;:{&quot;name&quot;:&quot;X_pressed.jpg&quot;,&quot;id&quot;:&quot;1_fZaFuGNd_KnU0Ln9qStPAKGgr1LxvzE&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/X_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/30839896-d440-4dd1-bc4a-2b28f0e84c6b&quot;:{&quot;name&quot;:&quot;Y.jpg&quot;,&quot;id&quot;:&quot;1WzD7i9gyHF_-5C5XguPS2dDoPVcdT0D3&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/Y.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/a8257c05-665b-458e-a67e-5dbac8d0fb7d&quot;:{&quot;name&quot;:&quot;Y_pressed.jpg&quot;,&quot;id&quot;:&quot;1qxm_aCLDIQBKkjk4UChOZmcw6fI5lsGa&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/Y_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/3156275a-77a2-4780-8c0c-95f72198d71e&quot;:{&quot;name&quot;:&quot;Z.jpg&quot;,&quot;id&quot;:&quot;1i1sI3FRofEy71IrooDm1OzuRtkDcWTqd&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/Z.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/afc57219-db7b-4b62-8389-68e38934e6e9&quot;:{&quot;name&quot;:&quot;Z_pressed.jpg&quot;,&quot;id&quot;:&quot;1euR306gkvQqPNL2vg9aJ5ufxcxyw8Mxy&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/Z_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/a35f4358-ab49-4ebe-b909-2862a165f55b&quot;:{&quot;name&quot;:&quot;A.jpg&quot;,&quot;id&quot;:&quot;1uBX-BGmuqXGzqAOYozXLpd5WLOD-1vSE&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/A.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/809d4b6a-0603-41c2-b998-edf5c167c59a&quot;:{&quot;name&quot;:&quot;A_pressed.jpg&quot;,&quot;id&quot;:&quot;1q-Ba_AVu8EDGaHIJtP6Uq2FbMMM202hA&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/A_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/0201be41-03fb-4a34-b3e3-5b7d67da0267&quot;:{&quot;name&quot;:&quot;B.jpg&quot;,&quot;id&quot;:&quot;1tSrG-g5fa9emZshp62TAnlnEKOuiMA0a&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/B.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/4ddce5ed-8525-4109-9f98-df7361252630&quot;:{&quot;name&quot;:&quot;T_pressed.jpg&quot;,&quot;id&quot;:&quot;1MadpxgJfFIsP-hSvl_nhDN4CW7DOmTCt&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/T_pressed.jpg&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/fc5d3ce5-81fb-4673-84d3-3b85705db8c9&quot;:{&quot;name&quot;:&quot;soundicon.png&quot;,&quot;id&quot;:&quot;1LAboVhivXYLD8ewhgf-LpR5peAwKgX8J&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/soundicon.png&quot;},&quot;blob:http://cdn.ctat.cs.cmu.edu/5a026dd7-3eda-413e-b964-c18f36f23473&quot;:{&quot;name&quot;:&quot;soundicon.png&quot;,&quot;id&quot;:&quot;1LAboVhivXYLD8ewhgf-LpR5peAwKgX8J&quot;,&quot;path&quot;:&quot;PhoneticsTutor/HTML/Assets/soundicon.png&quot;}}">
+    <style type="text/css" class="silex-temp-styles">
+    </style>
+    <meta name="parent-data" content="{&quot;id&quot;:&quot;1SzE4s2NYOg3Lseu6JpeyEowTC-fSEK9q&quot;, &quot;path&quot;:&quot;PhoneticsTutor/HTML/phonetics.ed.html&quot;}">
+
+
+
+
+
+    <style id="current-page-style">
+        .page-page-1{display:inherit; }
+    </style>
+    <!-- Silex HEAD tag do not remove -->
+    <!-- End of Silex HEAD tag do not remove -->
+</head>
+<!--onload = "ctatOnload();"-->
+
+<body data-silex-id="body-initial" class="body-initial prevent-draggable silex-runtime" data-silex-type="container" onload="ctatOnload();" style="">
+    <a id="page-page-1" data-silex-type="page" class="page-element">Page 1</a>
+    <div data-silex-id="background-initial" class="background background-initial editable-style container-element prevent-draggable" data-silex-type="container">
+        <div data-silex-type="container" class="editable-style silex-id-1543428486340-18 container-element page-page-1 paged-element" data-silex-id="silex-id-1543428486340-18"></div>
+        <div data-silex-type="ctat" class="CTATTextArea editable-style silex-id-1543427953548-2 page-page-1 paged-element CTATComponent" data-ctat-tabindex="1" data-silex-id="silex-id-1543427953548-2" id="ctatdiv9" data-ctat-component="CTATTextArea" data-ctat-enabled="true"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style silex-id-1543427984525-3 page-page-1 paged-element CTATComponent CTAT-button" data-ctat-tabindex="1" data-silex-id="silex-id-1543427984525-3" id="imageSound" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/fc5d3ce5-81fb-4673-84d3-3b85705db8c9" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/fc5d3ce5-81fb-4673-84d3-3b85705db8c9&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/fc5d3ce5-81fb-4673-84d3-3b85705db8c9" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false" tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543427988819-4 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543427988819-4" id="wordSound" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/5a026dd7-3eda-413e-b964-c18f36f23473" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/5a026dd7-3eda-413e-b964-c18f36f23473&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/5a026dd7-3eda-413e-b964-c18f36f23473" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false" tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style silex-id-1543428131680-5 page-page-1 paged-element CTATComponent CTAT-button" data-ctat-tabindex="1" data-silex-id="silex-id-1543428131680-5" id="letterA" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/a35f4358-ab49-4ebe-b909-2862a165f55b" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/a35f4358-ab49-4ebe-b909-2862a165f55b&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/a35f4358-ab49-4ebe-b909-2862a165f55b" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/809d4b6a-0603-41c2-b998-edf5c167c59a" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428374527-6 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428374527-6" id="letterB" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/0201be41-03fb-4a34-b3e3-5b7d67da0267" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/0201be41-03fb-4a34-b3e3-5b7d67da0267&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/0201be41-03fb-4a34-b3e3-5b7d67da0267" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/908b05e1-8a58-4441-a565-fa20e0394086" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428378449-7 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428378449-7" id="letterC" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/9bc23f49-bc38-41e8-9a7b-4007b763f47f" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/9bc23f49-bc38-41e8-9a7b-4007b763f47f&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/9bc23f49-bc38-41e8-9a7b-4007b763f47f" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/74858f6b-de8c-4b40-b404-76482fd81cc2" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428380812-8 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428380812-8" id="letterD" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/262a047b-9141-4865-92ac-93ee4ef27a05" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/262a047b-9141-4865-92ac-93ee4ef27a05&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/262a047b-9141-4865-92ac-93ee4ef27a05" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/53fec9a0-34e9-4b93-8001-1799edca1492" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428382936-9 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428382936-9" id="letterE" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/acd4d730-a419-4b21-84cf-7388e704e634" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/acd4d730-a419-4b21-84cf-7388e704e634&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/acd4d730-a419-4b21-84cf-7388e704e634" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/a2cb195d-3831-4230-bbff-7f92e3acdcdc" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428388469-10 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428388469-10" id="letterF" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/7ac33a5e-8dfe-44b0-b9ed-80dba74eed62" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/7ac33a5e-8dfe-44b0-b9ed-80dba74eed62&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/7ac33a5e-8dfe-44b0-b9ed-80dba74eed62" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/60019e3a-f4ce-4b29-8875-0f904dbd6988" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428401003-12 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428401003-12" id="letterG" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/282530b2-4fcc-4303-a2ca-7ef5f99b6e7d" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/282530b2-4fcc-4303-a2ca-7ef5f99b6e7d&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/282530b2-4fcc-4303-a2ca-7ef5f99b6e7d" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/78190e42-4d8f-401c-b2a5-f6cf419192d5" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428401007-13 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428401007-13" id="letterH" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/c2bcdf2c-85fb-4c0b-a7ba-2423c5b9ea64" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/c2bcdf2c-85fb-4c0b-a7ba-2423c5b9ea64&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/c2bcdf2c-85fb-4c0b-a7ba-2423c5b9ea64" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/4498ad55-bca9-4b6c-b53a-cac4a5403d4f" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428401013-14 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428401013-14" id="letterI" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/860f18cb-b13b-4bc4-9585-2de631a1679d" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/860f18cb-b13b-4bc4-9585-2de631a1679d&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/860f18cb-b13b-4bc4-9585-2de631a1679d" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/9470acec-5bea-4be9-9af3-7c837b8af1e3" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428401019-15 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428401019-15" id="letterJ" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/aa3fbfe4-c577-45b0-8636-eb3ada0952d9" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/aa3fbfe4-c577-45b0-8636-eb3ada0952d9&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/aa3fbfe4-c577-45b0-8636-eb3ada0952d9" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/b93c5f69-7bb0-45d9-9aa7-2eda384b4679" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428401025-16 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428401025-16" id="letterK" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/a9df42bb-5170-4222-979d-06d5aad265e9" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/a9df42bb-5170-4222-979d-06d5aad265e9&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/a9df42bb-5170-4222-979d-06d5aad265e9" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/8807e44b-8068-4f8d-8fdf-0fd606f7673d" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428401030-17 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428401030-17" id="letterL" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/ad25c87e-90ac-46e9-80c5-9e2459ca93ec" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/ad25c87e-90ac-46e9-80c5-9e2459ca93ec&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/ad25c87e-90ac-46e9-80c5-9e2459ca93ec" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/10d1cb27-a3ae-4c15-b690-817772eb30d3" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428564143-19 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428564143-19" id="letterM" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/94ed4ace-0703-4a92-8087-01538c4bfbfa" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/94ed4ace-0703-4a92-8087-01538c4bfbfa&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/94ed4ace-0703-4a92-8087-01538c4bfbfa" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/68641a49-3f1b-44f6-87a5-5c93d95a5732" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428564158-20 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428564158-20" id="letterN" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/c78ee497-0346-4e41-8ff2-72b341a6d357" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/c78ee497-0346-4e41-8ff2-72b341a6d357&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/c78ee497-0346-4e41-8ff2-72b341a6d357" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/16080bb3-3821-42f8-a15b-f7208d010ed9" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428564168-21 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428564168-21" id="letterO" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/397836b3-60e5-49a1-8849-88ec6731b9a2" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/397836b3-60e5-49a1-8849-88ec6731b9a2&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/397836b3-60e5-49a1-8849-88ec6731b9a2" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/9d702a07-a193-426f-ae05-6e2566bfe32d" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428564181-22 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428564181-22" id="letterP" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/385cc153-5793-44e5-b61b-74cdf5684b63" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/385cc153-5793-44e5-b61b-74cdf5684b63&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/385cc153-5793-44e5-b61b-74cdf5684b63" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/d545db2a-6a6c-481e-bc37-56be8e8bb1dc" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428564193-23 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428564193-23" id="letterQ" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/f93a8741-4955-48d0-a2ae-0e0e7c7a5aa7" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/f93a8741-4955-48d0-a2ae-0e0e7c7a5aa7&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/f93a8741-4955-48d0-a2ae-0e0e7c7a5aa7" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/f9ffcedf-8d62-4f4e-b2ff-8c15e4633c30" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428564206-24 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428564206-24" id="letterR" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/6604a1e4-39db-4d42-969f-1df39a763157" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/6604a1e4-39db-4d42-969f-1df39a763157&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/6604a1e4-39db-4d42-969f-1df39a763157" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/4c9aa959-102c-4cd9-85ee-3075ce01e67d" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428564218-25 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428564218-25" id="letterS" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/c1210039-e763-4d1a-9b56-cf3998734140" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/c1210039-e763-4d1a-9b56-cf3998734140&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/c1210039-e763-4d1a-9b56-cf3998734140" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/30ea7240-d9c4-48d6-b2d5-4a420adb74ab" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428564231-26 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428564231-26" id="letterT" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/c1c1c415-841e-4fc5-b4e8-1c8f5aadf718" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/c1c1c415-841e-4fc5-b4e8-1c8f5aadf718&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/c1c1c415-841e-4fc5-b4e8-1c8f5aadf718" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/4ddce5ed-8525-4109-9f98-df7361252630" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428564244-27 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428564244-27" id="letterU" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/c6afbc2c-5227-4d9a-95b7-c757ccbecf62" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/c6afbc2c-5227-4d9a-95b7-c757ccbecf62&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/c6afbc2c-5227-4d9a-95b7-c757ccbecf62" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/b0eca847-e032-450a-9346-8804168c9b4c" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428564259-28 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428564259-28" id="letterV" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/7815aa7b-4f54-4608-a76d-4d648f00b4ba" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/7815aa7b-4f54-4608-a76d-4d648f00b4ba&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/7815aa7b-4f54-4608-a76d-4d648f00b4ba" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/b50cbc21-aa22-4187-a705-697a57925248" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428564274-29 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428564274-29" id="letterW" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/31b4e50e-e28e-4cc6-8f66-05c7460aed8e" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/31b4e50e-e28e-4cc6-8f66-05c7460aed8e&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/31b4e50e-e28e-4cc6-8f66-05c7460aed8e" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/bb53e588-37e7-4beb-8cfa-219822a07e66" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428564286-30 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428564286-30" id="letterX" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/19403f34-f1ce-4cb1-b54a-58998f6aade2" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/19403f34-f1ce-4cb1-b54a-58998f6aade2&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/19403f34-f1ce-4cb1-b54a-58998f6aade2" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/04472ba8-f33a-40fa-8978-26d0b133f4d9" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428582704-31 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428582704-31" id="letterY" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/30839896-d440-4dd1-bc4a-2b28f0e84c6b" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/30839896-d440-4dd1-bc4a-2b28f0e84c6b&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/30839896-d440-4dd1-bc4a-2b28f0e84c6b" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/a8257c05-665b-458e-a67e-5dbac8d0fb7d" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+        <div data-silex-type="ctat" class="CTATImageButton editable-style CTATComponent CTAT-button silex-id-1543428582714-32 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1543428582714-32" id="letterZ" data-ctat-component="CTATImageButton"
+        data-ctat-enabled="true" data-ctat-img="blob:http://cdn.ctat.cs.cmu.edu/3156275a-77a2-4780-8c0c-95f72198d71e" role="button" style="background-size: cover; background-image: url(&quot;blob:http://cdn.ctat.cs.cmu.edu/3156275a-77a2-4780-8c0c-95f72198d71e&quot;);"
+        data-ctat-image-default="blob:http://cdn.ctat.cs.cmu.edu/3156275a-77a2-4780-8c0c-95f72198d71e" data-ctat-image-clicked="blob:http://cdn.ctat.cs.cmu.edu/afc57219-db7b-4b62-8389-68e38934e6e9" data-ctat-show-feedback="false" data-ctat-disable-on-correct="false"
+        tabindex="1"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
