@@ -45,9 +45,9 @@ function loadSounds(){
     // var fileextension = ".mp3";
 
     // var sounds = [];
-    filesFromDir(AssetsDir+"/sounds/words", ".mp3", addToSoundDict);
-    filesFromDir(AssetsDir+"/sounds/prompts", ".mp3",addToSoundDict);
-    filesFromDir(AssetsDir+"/sounds/letters", ".mp3",addToSoundDict);
+    filesFromDir(AssetsDir+"/sounds/words/", ".mp3", addToSoundDict);
+    filesFromDir(AssetsDir+"/sounds/prompts/", ".mp3",addToSoundDict);
+    filesFromDir(AssetsDir+"/sounds/letters/", ".mp3",addToSoundDict);
     // console.log(sounds);
     // for (var i = 0; i < sounds.length; i++) {
     //     var sound_path = sounds[i];
