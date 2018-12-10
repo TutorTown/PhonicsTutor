@@ -7,13 +7,25 @@ define Problem {
 	currPronunciation: [],
 	currError: [false,0,0,[]],
 	currSpelling: "",
+
 	imageSoundPressed: false,
 	imageSoundOutPressed: false,
+	bottomOutPressed: false,
+
+	needToImageSoundOutInit: false,
+	needToBottomOutInit: false,
+
+	hopLock: false,
+
 	maxLetters: 8,
-	constructor: function(n,w) {
+	letterElements : {},
+	miscElements : [],
+	constructor: function(n,w,ld,me) {
 		this.subgoal = 'enter_letter';
 		this.name = n;
 		this.word = w;
+		this.letterElements = ld;
+		this.miscElements = me;
 	}
 }
 
@@ -63,6 +75,8 @@ define letterElement {
 define interfaceElement {
 	name: null,
 	value: null,
+	toHop: false, 
+	hopTween: null, 
 	constructor: function(n, v) {
 		this.name = n;
 		this.value = v;

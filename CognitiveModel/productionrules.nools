@@ -2,8 +2,8 @@ import("types.nools");
 
 // var problem = null;
 
-function onLoad(prob_n, prob_w){
-	assert(new Problem(prob_n,prob_w));
+function onLoad(prob_n, prob_w,ld,me){
+	assert(new Problem(prob_n,prob_w,ld,me));
 	// playAudioFromText("~" + prob_w);
 	// if(word_pronunciation)
 	// var bb = document.getElementById("backButton");
@@ -18,10 +18,13 @@ function assignImage(id, dft, clk){
 
 }
 
-function startJumpTween(elm, jumpHeight=30,inflation=1.05){
+function startHopTween(elm, jumpHeight=30,inflation=1.05){
+	console.log("BEGIN HOP");
+	if(typeof elm == "string"){elm = document.getElementById(elm);}
 	var orgTop = elm.offsetTop;
-	var orgWidth = elm.offsetWidth;
-	var orgHeight = elm.offsetHeight;
+	var elmStyle = window.getComputedStyle(elm);
+	var orgWidth = elmStyle.width;
+	var orgHeight = elmStyle.height;
 	elm.style.top =  orgTop + "px";
 	elm.style.width =  orgWidth + "px";
 	elm.style.height =  orgHeight + "px";
@@ -36,11 +39,55 @@ function startJumpTween(elm, jumpHeight=30,inflation=1.05){
 	return tw;
 }
 
+function startHop(ie,jumpHeight=30,inflation=1.05){
+	console.log("HIPPITITY HOPS");
+	 if(ie.toHop){
+	 	var tw = startHopTween(ie.name, jumpHeight,inflation);
+	 	ie.hopTween = tw;
+	 }
+}
+
+function queueHop(ie,delay,jumpHeight=30,inflation=1.05){
+	console.log("HOPS");
+	if(!ie.toHop){
+		modify(ie, "toHop", true);
+		setTimeout(function (){startHop(ie)}, delay);	
+	}
+}
+
+
 function stopTween(elm){
 	createjs.Tween.removeTweens(elm);
 }
 
+function stopHop(ie){
+	console.log("STOP HOPS");
+	if(ie.toHop == true) modify(ie, "toHop", false);
+	// ie.toHop = false; //Don't use modify
+	if(ie.hopTween){
+		console.log(ie.hopTween);
+		ie.hopTween.loop = 0;	
+	}
+	
+	// stopTween(document.getElementById(ie.name));	
+}
+
+function stopAllHops(p){
+	for (var i = 0; i < 26; i++) {
+		var chr = String.fromCharCode(97 + i).toUpperCase();
+		stopHop(p.letterElements[chr]);
+	}
+	for (var i = 0; i < p.miscElements.length; i++) {
+		stopHop(p.miscElements[i]);	
+	}
+
+
+}
+
+
+
 function moveTo(elm,t, l, delay=500, speed=500,op=1.0){
+	// var elmStyle = window.getComputedStyle(elm);
 	var orgLeft = elm.offsetLeft;
 	var orgTop = elm.offsetTop;
 	elm.style.top =  orgTop + "px";
@@ -90,36 +137,65 @@ rule bootstrap {
 			signalLoad();
 		}
 
-		document.addEventListener("PHONICS_ASSETS_LOADED", function(){onLoad(problem_name,problem_word);});
-		// console.log("IT WORKDS");
-
 		/* -------- LETTER BUTTONS ----------  */
 
+		var letter_dict = {};
 		for (i = 0; i < 26; i++) {
 			var chr = String.fromCharCode(97 + i).toUpperCase();
 			var name = "letter" + chr.toUpperCase();
 			console.log(chr);
-			assert(new letterElement(name, chr));
+			var le = new letterElement(name, chr);
+			assert(le);
+			letter_dict[chr] = le;
 			assignImage(name, chr + ".jpg", chr + "_pressed.jpg");
 		}
+
+		
+		// console.log("IT WORKDS");
+
+		
+
+		
 
 		/* -------- IMAGE SOUND ----------  */
 
 		assignImage("imageSound", "soundicon.png", "soundicon.png");
-		assert(new interfaceElement("imageSound",null));
+		var ims = new interfaceElement("imageSound",null);
+		// modify(ims, "toHop", true);
+		assert(ims);
+		queueHop(ims, 5000);
+		// setTimeout(function (){startHop(ims)}, 10);
 
 		
 		/* -------- WORD SOUND ----------  */
 
 		assignImage("wordSound", "soundicon.png", "soundicon.png");
-		assert(new interfaceElement("wordSound",null));
+		var ws = new interfaceElement("wordSound",null);
+		assert(ws);
 
 
 
 		/* -------- BACK BUTTOM ----------  */
 		
 		assignImage("backButton", "backbutton.png", "backbutton.png");
-		assert(new interfaceElement("backButton",null));
+		var bb = new interfaceElement("backButton",null);
+		assert(bb);
+
+
+		/* -------- DONE BUTTOM ----------  */
+		
+		// assignImage("done", "backbutton.png", "backbutton.png");
+		var d = new interfaceElement("done",null);
+		assert(d);
+		// var d = document.getElementById("done");
+		// d.style.top = 240 + "px";
+		// d.style.left = 500+ "px";
+
+		var imso = new interfaceElement("imageSoundOut",null);
+		assert(imso);
+
+		var bo = new interfaceElement("bottomOut",null);
+		assert(bo);
 
 
 		/* -------- TYPED LETTERS ----------  */
@@ -129,9 +205,11 @@ rule bootstrap {
 		// tl.style.font = "Courier";
 		tl.setAttribute("data-ctat-show-feedback","false");
 		tl.setAttribute("data-ctat-disable-on-correct","false");
-
-		assert(new interfaceElement("typed_letters",null));
+		var tl_elm = new interfaceElement("typed_letters",null);
+		assert(tl_elm);
 		
+		var miscElements = [tl_elm,bo, imso, d,bb,ws,ims];
+		document.addEventListener("PHONICS_ASSETS_LOADED", function(){onLoad(problem_name,problem_word,letter_dict,miscElements);});
 
 		/* -------- IMAGE PROMPT ----------  */
 
@@ -158,20 +236,21 @@ rule bootstrap {
 		console.log(elm.style.top,elm.style.width);
 
 
-		var orgTop = elm.offsetTop;
-		var orgWidth = elm.offsetWidth;
-		var orgHeight = elm.offsetHeight;
-		elm.style.top =  orgTop + "px";
-		elm.style.width =  orgWidth + "px";
-		elm.style.height =  orgHeight + "px";
-		var jumpHeight = 30;
-		var inflation = 1.05;
-		var tw = createjs.Tween.get(elm, {loop: true})
-				.to({top:orgTop - jumpHeight, width:orgWidth * inflation,height:orgHeight * inflation}
-					, 500, createjs.Ease.quadOut)
-				.to({top:orgTop,			  width:orgWidth,	   height:orgHeight}  	 
-					, 500, createjs.Ease.bounceOut)
-				.wait(1000);
+		
+		// var orgTop = elm.offsetTop;
+		// var orgWidth = elm.offsetWidth;
+		// var orgHeight = elm.offsetHeight;
+		// elm.style.top =  orgTop + "px";
+		// elm.style.width =  orgWidth + "px";
+		// elm.style.height =  orgHeight + "px";
+		// var jumpHeight = 30;
+		// var inflation = 1.05;
+		// var tw = createjs.Tween.get(elm, {loop: true})
+		// 		.to({top:orgTop - jumpHeight, width:orgWidth * inflation,height:orgHeight * inflation}
+		// 			, 500, createjs.Ease.quadOut)
+		// 		.to({top:orgTop,			  width:orgWidth,	   height:orgHeight}  	 
+		// 			, 500, createjs.Ease.bounceOut)
+		// 		.wait(1000);
 		// createjs.Ticker.timingMode = createjs.Ticker.RAF;
 
 		// var tw = createjs.Tween.get(elm).to({x:100}, 500).start();
@@ -205,7 +284,7 @@ rule bootstrap {
 	}
 }
 
-rule LetterPress{
+rule PressLetter{
 	when {
 		p: Problem p.subgoal === "enter_letter";
 		le: letterElement {name:letter_name, value:letter_value};
@@ -218,6 +297,11 @@ rule LetterPress{
 
 			console.log(default_phones_dict[letter_value.toUpperCase()], letter_value);
 
+			stopHop(p.letterElements[letter_value.toUpperCase()]);
+			// stopHop(d);
+			// if(p.pressImageSound && p.pressImageSoundOut){
+			// 	stopHop(d);
+			// }
 
 			if(already_typed === null) already_typed = "";
 			var new_value = already_typed.concat(letter_value).toUpperCase();
@@ -310,6 +394,7 @@ rule InputText{
 rule checkSpell{
 	when{
 		p: Problem p.subgoal === "handle_input" {currSpelling:cs, currPronunciation:cp};
+		// d : interfaceElement d.name === "done"; 
 		ie: interfaceElement ie.name === "typed_letters" && ie.value != cs;
 		sp: SpellCheck;
 	}then{
@@ -326,6 +411,11 @@ rule checkSpell{
 		modify(p, "currSpelling", sp.spelling);
 		modify(p, "currPronunciation", out[3]);
 		modify(p, "currError", out);
+
+		
+
+
+
 		// modify(sp, "firstError", out);
 		// modify(sp, "phase", 2);
 
@@ -345,9 +435,42 @@ rule checkSpell{
 	}
 }
 
+rule handleHops{
+	salience : 2;
+	when{
+		d : interfaceElement d.name === "done"; 
+		ims : interfaceElement ims.name === "imageSound"; 
+		imso : interfaceElement imso.name === "imageSoundOut"; 
+		bb : interfaceElement bb.name === "backButton"; 
+		p: Problem p.subgoal === "handle_input" && !p.hopLock {currSpelling:cs, currPronunciation:cp};
+		ir: inputResponse {input:inp};	
+	}then{
+
+		console.log("HANDLE HOPS");
+		stopAllHops(p);
+		var err = p.currError;
+		if(!err[0]){
+			if(!p.imageSoundPressed){
+				queueHop(ims,1000);
+			}else if(!p.imageSoundOutPressed){
+				queueHop(imso,1000);
+			}else{
+
+			}
+		}else{
+			console.log("DONE!");
+			queueHop(d,1000);
+		}
+		// backtrack();
+
+	}
+
+}
+
 rule moveBottomOut{
 	salience : 1;
 	when{
+		p: Problem p.imageSoundPressed && p.imageSoundOutPressed;
 		ir: inputResponse {input:inp};
 		bo: interfaceElement bo.name === "bottomOut";
 	}then{
@@ -405,14 +528,21 @@ rule pressImageSound{
 	when{
 		p: Problem {imageSoundPressed:imSP};
 		ie: interfaceElement ie.name === "imageSound";
+		not(nh: ShowNextHint);
 	}then{
 		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
-			console.log("FIRE TO COMPLE");
+			console.log("PRESSED IMAGE SOUND");
 			// playAudioFromText("~table");
+			stopHop(ie);
+
 			if(!imSP){
+				console.log("IN HERE");
 				modify(p, "imageSoundPressed", true);
 				assert(new ShowNextHint(2));	
+			}else{
+				halt();
 			}
+			// halt()
 		}else{
 			backtrack();	
 		}
@@ -423,11 +553,13 @@ rule initImageSoundOut{
 	when{
 		nh: ShowNextHint nh.level == 2;
 		is: interfaceElement is.name === "imageSound";
-		not(ie: interfaceElement ie.name === "imageSoundOut");
+		imso: interfaceElement imso.name === "imageSoundOut";
+		// not(ie: interfaceElement ie.name === "imageSoundOut");
 	}then{
 		console.log("IINININI");
+
+
 		assignImage("imageSoundOut", "soundouticon.png", "soundouticon.png");
-		assert(new interfaceElement("imageSoundOut",null));
 		var elm = document.getElementById("imageSoundOut");
 		var isElm = document.getElementById("imageSound");
 		elm.style.left =  isElm.offsetLeft + "px";
@@ -436,12 +568,18 @@ rule initImageSoundOut{
 			.to({left:320}
 				, 500, createjs.Ease.quadOut)
 			.wait(1000);
+
 		retract(nh);
+
+		queueHop(imso,5000);
+
+		// modify(p,"needToImageSoundOutInit", false);
 		halt();
 	}
 }
 
 rule pressImageSoundOut{
+	salience: -1;
 	when{
 		p: Problem {imageSoundOutPressed:imSP, word:word};
 		ie: interfaceElement ie.name === "imageSoundOut";
@@ -449,9 +587,13 @@ rule pressImageSoundOut{
 		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
 			console.log("FIRE TO COMPLE");
 			playAudioFromText("~" + word);
+
+			stopHop(ie);
 			if(!imSP){
 				modify(p, "imageSoundOutPressed", true);
 				assert(new ShowNextHint(3));	
+			}else{
+				halt();
 			}
 		}else{
 			backtrack();	
@@ -464,11 +606,12 @@ rule initBottomOutHint{
 		nh: ShowNextHint nh.level == 3;
 		is: interfaceElement is.name === "imageSoundOut";
 		tl: interfaceElement tl.name === "typed_letters";
-		not(ie: interfaceElement ie.name === "bottomOut");
+		bo: interfaceElement bo.name === "bottomOut";
+		// not(ie: interfaceElement ie.name === "bottomOut");
 	}then{
 		console.log("BOTTOMOUT");
 		assignImage("bottomOut", "questionicon.png", "questionicon.png");
-		assert(new interfaceElement("bottomOut",null));
+
 		var elm = document.getElementById("bottomOut");
 		var isElm = document.getElementById("imageSoundOut");
 		elm.style.left = isElm.offsetLeft + "px";
@@ -485,7 +628,8 @@ rule initBottomOutHint{
 		var letterLength = visualLength(tl.value) * 4;
 		moveTo(elm, tl_e.offsetTop - (elm.offsetHeight + 10), tl_e.offsetLeft + letterLength + 15);
 		// setTimeout(function (){
-			
+		
+		queueHop(bo,5000);
 		// } ,delay);
 		// moveTo(elm, tl_e.offsetTop - (elm.offsetHeight + 10), tl.offsetLeft + letterLength + 15);
 		// moveTo(elm,  , letterLength)
@@ -497,38 +641,61 @@ rule initBottomOutHint{
 rule pressBottomOut{
 	when{
 		p: Problem;
+		d : interfaceElement d.name === "done";
 		ie: interfaceElement ie.name === "bottomOut";
 	}then{
 		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
 			// console.log("FIRE TO COMPLE");
 			// playAudioFromText("~table");
 			console.log(p.currError);
+			stopHop(ie);
 			// if(typeof p.currError == "undefined"){
 				// console.log("OK SO FAR", 0,0);
 			// }else{
-				var err = p.currError;
-				if(!err[0]){
-					console.log(err[3].length);
-					if(err[2] < err[3].length){
-						console.log("MISSPELLED", err[2],err[3].length);
-						console.log("First Bad Letter is", p.currSpelling[err[1]]);
-					}else{
-						console.log("OK SO FAR", err[2],err[3].length);
-						console.log("Next is", phonetics_dict[p.word.toUpperCase()][err[2]]);
-					}	
+			modify(p, "bottomOutPressed", true);
+
+			var err = p.currError;
+			if(!err[0]){
+				console.log(err[3].length);
+				if(err[2] < err[3].length){
+					console.log("MISSPELLED", err[2],err[3].length);
+					console.log("First Bad Letter is", p.currSpelling[err[1]]);
 				}else{
-					console.log("DONE!");
-				}
+					console.log("OK SO FAR", err[2],err[3].length);
+					var nextPhone = phonetics_dict[ p.word.toUpperCase() ][err[2]];
+					console.log("Next is", nextPhone);
+					var le = p.letterElements[nextPhone];
+					console.log(le);
+					queueHop(le,5000);
+				}	
+			}else{
+				console.log("DONE!");
+				queueHop(d,1000);
+			}
 			// }
 			
 			
-			
+			halt();
 		}else{
 			backtrack();	
 		}
 	}
 }
 
+rule done{
+	when{
+		p: Problem p.currError[0] {currPronunciation:pronunciation};
+		ie: interfaceElement ie.name === "done";
+	}then{
+		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
+			console.log("DONSKIES");
+			halt()
+;		}
+		// backtrack();
+	}
+
+
+}
 
 rule pressWordSound{
 	when{
