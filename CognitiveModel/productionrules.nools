@@ -628,11 +628,7 @@ rule pressImageSoundOut{
 			if(!imSP){
 				modify(p, "imageSoundOutPressed", true);
 				assert(new ShowNextHint(3));	
-			}else{
-				halt();
 			}
-		}else{
-			backtrack();	
 		}
 	}
 }
