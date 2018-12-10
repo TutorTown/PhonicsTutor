@@ -5,6 +5,10 @@ import("types.nools");
 function onLoad(prob_n, prob_w,ld,me){
 	assert(new Problem(prob_n,prob_w,ld,me));
 	playAudioFromText("lets_spell " + prob_w + " start_by_sounding_it_out");
+
+	// var D = document.getElementById("done").firstElementChild;
+	// removeListeners(D);
+	// D.addEventListener("click", assertDoneSAI);
 	// if(word_pronunciation)
 	// var bb = document.getElementById("backButton");
 	// bb.style.opacity = 0.5;
@@ -121,6 +125,17 @@ function visualLength(str)
     return ruler.offsetWidth;
 }
 
+// function assertDoneSAI(){
+// 	console.log("MOOOOOOOOOOO");
+//   assert(new StudentValues('done', "ButtonPressed", -1));   
+// }
+
+// function removeListeners(el){
+// 	var elClone = el.cloneNode(true);
+
+// 	el.parentNode.replaceChild(elClone, el);
+// }
+
 // function getNext
 //--------------------------------------------------------------------------------------------
 //
@@ -202,6 +217,8 @@ rule bootstrap {
 		/* -------- DONE BUTTOM ----------  */
 		
 		// assignImage("done", "backbutton.png", "backbutton.png");
+
+
 		var d = new interfaceElement("done",null);
 		assert(d);
 		// var d = document.getElementById("done");
@@ -717,7 +734,7 @@ rule pressBottomOut{
 
 					var toplay = p.currPronunciation.slice(0);
 					toplay.push(badLetterSound);
-					toplay.push(400);
+					toplay.push(50);
 					toplay.push("!" + firstBadLetter + " makes_the " + badLetterSound +
 					 " sound 400 press_the_erase_button_to_remove !" + firstBadLetter +
 					  " 200 and_find_the_letter_that_makes_the " + nextPhone + " sound");
@@ -752,27 +769,40 @@ rule pressWordSound{
 		ie: interfaceElement ie.name === "wordSound";
 	}then{
 		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
-			console.log("FIRE TO COMPLE");
-			playAudioFromText(pronunciation);
-			
+			playAudioFromText(pronunciation);			
 		}
 		// backtrack();
 	}
 
 }
 
+// function killScrim(count=0){
+// 	if(count >= 100) return;
+// 	console.log("KILL THAT SCRIM", 100);
+// 	var scrimOK = document.getElementById("OK");
+// 	if(scrimOK){
+// 		scrimOK.click();
+// 	}else{
+// 		setTimeout(function() {killScrim(++count);}, 50);
+// 	}
+
+// }
 
 rule done{
 	when{
 		p: Problem p.currError[0] {currPronunciation:pronunciation};
 		ie: interfaceElement ie.name === "done";
 	}then{
+		console.log("DONEWWW");
 		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
 			console.log("DONSKIES");
-			halt();
+			// halt();
 
 			toNext();
-		}
+		}//else{
+		// 	// killScrim();
+		// 	backtrack();
+		// }
 		// backtrack();
 	}
 

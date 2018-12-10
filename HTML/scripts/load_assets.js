@@ -154,10 +154,20 @@ function toNext(){
     var urlParams = new URLSearchParams(window.location.search);
     var move_num = urlParams.get('mov_num');
     var next_num = parseInt(move_num) + 1;
+    var url = '../movie' + next_num + ".html";
 
-    setTimeout(function(){
-        window.location='../movie' + next_num + ".html";
-    }, 100);
+    $.get(url)
+    .done(function() { 
+        // exists code
+        setTimeout(function(){
+            window.location=url;
+        }, 100); 
+    }).fail(function() { 
+        url = '../end.html';
+        setTimeout(function(){
+            window.location=url;
+        }, 100); 
+    });
 }
 
 
