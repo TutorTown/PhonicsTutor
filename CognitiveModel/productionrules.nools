@@ -42,8 +42,13 @@ function startHopTween(elm, jumpHeight=30,inflation=1.05){
 function startHop(ie,jumpHeight=30,inflation=1.05){
 	console.log("HIPPITITY HOPS");
 	 if(ie.toHop){
-	 	var tw = startHopTween(ie.name, jumpHeight,inflation);
-	 	ie.hopTween = tw;
+	 	if(ie.hopTween == null){
+	 		var tw = startHopTween(ie.name, jumpHeight,inflation);
+	 		ie.hopTween = tw;
+	 	}else{
+	 		ie.hopTween.loop = -1;
+	 	}
+	 	
 	 }
 }
 
@@ -441,12 +446,13 @@ rule handleHops{
 		d : interfaceElement d.name === "done"; 
 		ims : interfaceElement ims.name === "imageSound"; 
 		imso : interfaceElement imso.name === "imageSoundOut"; 
-		bb : interfaceElement bb.name === "backButton"; 
+		bo : interfaceElement bo.name === "bottomOut"; 
 		p: Problem p.subgoal === "handle_input" && !p.hopLock {currSpelling:cs, currPronunciation:cp};
 		ir: inputResponse {input:inp};	
 	}then{
 
 		console.log("HANDLE HOPS");
+		modify(p, "hopLock", true);
 		stopAllHops(p);
 		var err = p.currError;
 		if(!err[0]){
@@ -455,7 +461,8 @@ rule handleHops{
 			}else if(!p.imageSoundOutPressed){
 				queueHop(imso,1000);
 			}else{
-
+				console.log("QUEUE BOTTOM OUT");
+				queueHop(bo,1000);
 			}
 		}else{
 			console.log("DONE!");
@@ -519,6 +526,7 @@ rule doneWithSpellCheck{
 		console.log("KILLLED IT");
 		modify(p, "subgoal", "enter_letter");
 		retract(ir);
+		modify(p, "hopLock", false);
 		halt();
 		// var offset = inp.length * 
 	}
