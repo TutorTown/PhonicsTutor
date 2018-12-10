@@ -3,4 +3,4 @@ import("productionrules.nools");
 
 global problem_word = "bowl";
 global problem_name = "bowl";
-global word_pronunciation = ["B", "OW1", "L"];
+global word_pronunciation = ["B", "OW", "L"];

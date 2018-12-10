@@ -4,7 +4,7 @@ import("types.nools");
 
 function onLoad(prob_n, prob_w,ld,me){
 	assert(new Problem(prob_n,prob_w,ld,me));
-	// playAudioFromText("~" + prob_w);
+	playAudioFromText("lets_spell " + prob_w + " start_by_sounding_it_out");
 	// if(word_pronunciation)
 	// var bb = document.getElementById("backButton");
 	// bb.style.opacity = 0.5;
@@ -134,9 +134,12 @@ rule bootstrap {
 		b: Boolean b === true from true;
 	}
 	then {
+		loadSounds();
 		loadPhones();    
     	loadGraphemes();
     	loadDefaultPhones();
+    	loadDefaultLetters();
+
 
 
 
@@ -548,7 +551,7 @@ rule pressImageSound{
 	}then{
 		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
 			console.log("PRESSED IMAGE SOUND");
-			// playAudioFromText("~table");
+			playAudioFromText(p.word);
 			stopHop(ie);
 
 			if(!imSP){
@@ -556,7 +559,7 @@ rule pressImageSound{
 				modify(p, "imageSoundPressed", true);
 				assert(new ShowNextHint(2));	
 			}else{
-				halt();
+				backtrack();
 			}
 			// halt()
 		}else{
@@ -674,20 +677,61 @@ rule pressBottomOut{
 			var err = p.currError;
 			if(!err[0]){
 				console.log(err[3].length);
-				if(err[2] < err[3].length){
-					console.log("MISSPELLED", err[2],err[3].length);
-					console.log("First Bad Letter is", p.currSpelling[err[1]]);
-					queueHop(bb,1000);
-				}else{
+
+
+				var pronunc = phonetics_dict[p.word.toUpperCase()];
+				console.log(p.word,pronunc);
+				var nextPhone = pronunc[err[2]];
+				var nextLetters = default_letters_dict[nextPhone][0];
+				console.log("NEXT LETTERS", nextLetters , nextPhone);
+				// var nextLetter = nextLetters.length > 1 
+				// 				 && p.currSpelling.slice(-1)[0] == nextLetters[0][0] ?
+				// 				 nextLetters[0][1] : nextLetters[0][0];
+				var nextLetter = nextLetters[0];
+				var slip = 0;
+				if(p.currSpelling[err[1]] == nextLetter){
+					nextLetter = nextLetters[1];
+					slip++;
+				}
+				console.log("Next is", nextLetter);
+
+				if(err[2] >= err[3].length - slip){
+					//OK SO FAR
 					console.log("OK SO FAR", err[2],err[3].length);
-					var nextPhone = phonetics_dict[ p.word.toUpperCase() ][err[2]];
-					console.log("Next is", nextPhone);
-					var le = p.letterElements[nextPhone];
+					
+
+					var toplay = p.currPronunciation.slice(0);
+					toplay.push(nextPhone);
+					toplay.push("the_next_sound_is " + nextPhone + " 400 !" + nextLetter + " makes_the 100 " + nextPhone + " sound 400 press_the_button_for !" + nextLetter);
+					playAudioFromText(toplay);
+
+					var le = p.letterElements[nextLetter];
 					console.log(le);
-					queueHop(le,5000);
+					queueHop(le,1000);
+				}else{
+					//OK MISSPELLED
+					var firstBadLetter = p.currSpelling[err[1]];
+					var badLetterSound = default_phones_dict[firstBadLetter.toUpperCase()][0];
+					console.log("MISSPELLED", err[2],err[3].length);
+					console.log("First Bad Letter is", firstBadLetter, "MAKES", badLetterSound);
+
+					var toplay = p.currPronunciation.slice(0);
+					toplay.push(badLetterSound);
+					toplay.push(400);
+					toplay.push("!" + firstBadLetter + " makes_the " + badLetterSound +
+					 " sound 400 press_the_erase_button_to_remove !" + firstBadLetter +
+					  " 200 and_find_the_letter_that_makes_the " + nextPhone + " sound");
+					playAudioFromText(toplay);
+
+					queueHop(bb,1000);
 				}	
 			}else{
+				//DONE
 				console.log("DONE!");
+
+				playAudioFromText("great_job_you_spelled " + p.word 
+					+ " 400 press_the_green_done_button_to_continue");
+
 				queueHop(d,1000);
 			}
 			// }

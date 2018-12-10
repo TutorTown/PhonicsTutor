@@ -3,4 +3,4 @@ import("productionrules.nools");
 
 global problem_word = "kid";
 global problem_name = "kid";
-global word_pronunciation = ["K", "IH1", "D"];
+global word_pronunciation = ["K", "IH", "D"];

@@ -74,8 +74,8 @@ function firstError(word,spelling, allowSkipInteriorVowels=false){
 
 				k += g1[0].length;
 				i += 1;	
-			}else if(allowSkipInteriorVowels && checkInteriorVowel(phonetic_spelling,i)){
-				console.log("THEE");
+			}else if(allowSkipInteriorVowels && k != sp_copy.length && checkInteriorVowel(phonetic_spelling,i)){
+				console.log("THEE", k, sp_copy.length);
 				i +=1;
 			}else{
 				var output_phones = phones_sofar.slice(0);

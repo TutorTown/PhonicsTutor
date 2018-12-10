@@ -6,7 +6,7 @@ var playing = false;
 var errorSound = new Audio(audioDir+"/error.mp3");
 
 function handleAudio(arr,init=false){
-	// console.log(arr);
+	console.log("HANDLE", arr);
     if(init && playing) return;
 	if(arr.length === 0){
         playing = false;
@@ -16,12 +16,22 @@ function handleAudio(arr,init=false){
 
     // console.log(arr);
 	var sound = arr.shift();
-    if(typeof sound == "object"){
-        alert("SOUND NOT STRING");
-    }
+
+    
+    // if(typeof sound == "object"){
+    //     console.log(sound);
+    //     alert("SOUND NOT STRING");
+    // }
 
     if(isNaN(parseInt(sound))){
         if(typeof sound === 'string'){
+            //Split up sentences
+            var splitup = sound.split(/[\t ,]+/)
+            if(splitup.length > 1){
+                sound = splitup.shift();
+                arr = splitup.concat(arr);
+            }
+
             if(sound in phones_dict){
                 sound = phones_dict[sound]["audio"];  
             }else if(sound[0] === "~"){
@@ -36,8 +46,11 @@ function handleAudio(arr,init=false){
                     alert("WORD NOT IN DICT: ", sound);
                 }
                 return;
+            }else if(sound[0] === "!"){
+                sound = sound_dict[sound.slice(1)];
             }else if(sound in sound_dict){
-                alert("NOT IMPLEMENETED");
+                // alert("NOT IMPLEMENETED");
+                sound = sound_dict[sound];
             }else{
                 // console.log("G".length, sound.length);
                 // console.log("G".charCodeAt(0), sound.charCodeAt(0));
@@ -66,6 +79,7 @@ function handleAudio(arr,init=false){
 }
 
 function playAudioFromText(x) {
+    console.log("PLAY",x);
 
     if(typeof x === "string"){
         handleAudio(x.split(/[\t ,]+/), true);    

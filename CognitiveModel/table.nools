@@ -3,4 +3,4 @@ import("productionrules.nools");
 
 global problem_word = "table";
 global problem_name = "table";
-global word_pronunciation = ["T", "EY1", "B", "L"];
+global word_pronunciation = ["T", "EY", "B", "L"];

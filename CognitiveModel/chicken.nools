@@ -3,4 +3,4 @@ import("productionrules.nools");
 
 global problem_word = "chicken";
 global problem_name = "chicken";
-global word_pronunciation = ["CH", "IH1", "K", "AH0", "N"];
+global word_pronunciation = ["CH", "IH", "K", "AH", "N"];
