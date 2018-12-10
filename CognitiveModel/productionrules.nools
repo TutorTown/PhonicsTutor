@@ -797,12 +797,11 @@ rule done{
 		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
 			console.log("DONSKIES");
 			// halt();
-
 			toNext();
-		}//else{
-		// 	// killScrim();
-		// 	backtrack();
-		// }
+		}else{
+			// killScrim();
+			backtrack();
+		}
 		// backtrack();
 	}
 
