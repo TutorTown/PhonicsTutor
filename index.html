@@ -4,13 +4,41 @@
     <title>Redirect url in Javascript</title> 
 </head> 
 <body> 
+<style>
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  position:absolute;
+  top:50%
+}
+
+.wrapper{
+	text-align:center;
+}
+</style>
 <script>
-	var extra = ""; 
-	if(String(window.location.href).includes("github.io")){
-		extra = "/PhonicsTutor";
+	// var extra = ""; 
+	// if(String(window.location.href).includes("github.io")){
+	// 	extra = "/PhonicsTutor";
+	// }
+    // var url= extra + "/HTML/phonetics.html?question_file=../CognitiveModel/table.nools"; 
+  	// var url = "./HTML/Assets/videos/morepies1.mp4";
+    // window.location = url; 
+
+	function startVideo(){
+		window.location = "./movie1.html";
 	}
-    var url= extra + "/HTML/phonetics.html?question_file=../CognitiveModel/table.nools"; 
-    window.location = url; 
 </script> 
+
+<div class="wrapper">
+	<h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"> Phonetics Tutor </h1>
+	<button onclick="startVideo()">Start!</button>
+</div>
 </body> 
 </html>

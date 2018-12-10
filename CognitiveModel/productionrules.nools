@@ -41,13 +41,21 @@ function startHopTween(elm, jumpHeight=30,inflation=1.05){
 
 function startHop(ie,jumpHeight=30,inflation=1.05){
 	console.log("HIPPITITY HOPS");
+	// modify(ie, "hopQueued", false);
 	 if(ie.toHop){
-	 	if(ie.hopTween == null){
-	 		var tw = startHopTween(ie.name, jumpHeight,inflation);
-	 		ie.hopTween = tw;
-	 	}else{
-	 		ie.hopTween.loop = -1;
+	 	if(ie.hopTween != null){
+	 		if(!ie.hopTween.paused) return;
+	 		ie.hopTween.loop = 0;	
+	 		ie.hopTween.setPosition(ie.hopTween.duration);
 	 	}
+ 		var tw = startHopTween(ie.name, jumpHeight,inflation);
+ 		ie.hopTween = tw;
+
+ 		
+	 	// }else{
+	 	// 	ie.hopTween.loop = -1;
+	 	// 	ie.hopTween.play();
+	 	// }
 	 	
 	 }
 }
@@ -56,6 +64,7 @@ function queueHop(ie,delay,jumpHeight=30,inflation=1.05){
 	console.log("HOPS");
 	if(!ie.toHop){
 		modify(ie, "toHop", true);
+		// modify(ie, "hopQueued", true);
 		setTimeout(function (){startHop(ie)}, delay);	
 	}
 }
@@ -221,7 +230,7 @@ rule bootstrap {
 		try{
 			var ip = document.getElementById("imagePrompt");
 			var im = ip.firstElementChild;
-			im.setAttribute("src", "Assets/" + problem_word +".jpg");
+			im.setAttribute("src", "Assets/" + problem_word +".png");
 		}catch(error){
 			console.log(error);
 			alert("Cannot find image for " + problem_word);
@@ -461,12 +470,11 @@ rule handleHops{
 			}else if(!p.imageSoundOutPressed){
 				queueHop(imso,1000);
 			}else{
-				console.log("QUEUE BOTTOM OUT");
-				queueHop(bo,1000);
+				queueHop(bo,10000);
 			}
 		}else{
 			console.log("DONE!");
-			queueHop(d,1000);
+			queueHop(bo,5000);
 		}
 		// backtrack();
 
@@ -651,6 +659,7 @@ rule pressBottomOut{
 		p: Problem;
 		d : interfaceElement d.name === "done";
 		ie: interfaceElement ie.name === "bottomOut";
+		bb: interfaceElement bb.name === "backButton";
 	}then{
 		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
 			// console.log("FIRE TO COMPLE");
@@ -668,6 +677,7 @@ rule pressBottomOut{
 				if(err[2] < err[3].length){
 					console.log("MISSPELLED", err[2],err[3].length);
 					console.log("First Bad Letter is", p.currSpelling[err[1]]);
+					queueHop(bb,1000);
 				}else{
 					console.log("OK SO FAR", err[2],err[3].length);
 					var nextPhone = phonetics_dict[ p.word.toUpperCase() ][err[2]];
@@ -690,20 +700,7 @@ rule pressBottomOut{
 	}
 }
 
-rule done{
-	when{
-		p: Problem p.currError[0] {currPronunciation:pronunciation};
-		ie: interfaceElement ie.name === "done";
-	}then{
-		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
-			console.log("DONSKIES");
-			halt()
-;		}
-		// backtrack();
-	}
 
-
-}
 
 rule pressWordSound{
 	when{
@@ -717,5 +714,23 @@ rule pressWordSound{
 		}
 		// backtrack();
 	}
+
+}
+
+
+rule done{
+	when{
+		p: Problem p.currError[0] {currPronunciation:pronunciation};
+		ie: interfaceElement ie.name === "done";
+	}then{
+		if(checkSAI({selection: ie.name, action: "ButtonPressed", input: "don't_care"})) {
+			console.log("DONSKIES");
+			halt();
+
+			toNext();
+		}
+		// backtrack();
+	}
+
 
 }

@@ -85,6 +85,16 @@ function signalLoad(){
     }
 }
 
+function toNext(){
+    var urlParams = new URLSearchParams(window.location.search);
+    var move_num = urlParams.get('mov_num');
+    var next_num = parseInt(move_num) + 1;
+
+    setTimeout(function(){
+        window.location='../movie' + next_num + ".html";
+    }, 100);
+}
+
 
 
 $( document ).ready(function() {
