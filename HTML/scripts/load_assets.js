@@ -1,5 +1,5 @@
 var sound_dict = {};
-var sd_count = 0;
+var sounds_loaded = false;
 var phones_dict = null;
 var phonetics_dict = null;
 var grapheme_dict = null;
@@ -14,25 +14,25 @@ var AssetsDir = window.location.href.split("HTML/")[0] + "HTML/Assets";
 
 var audioDir = "./Assets/sounds";
 
-function filesFromDir(dir,fileextension, callback){
-    $.ajax({
-        //This will retrieve the contents of the folder if the folder is configured as 'browsable'
-        url: dir,
-        success: function (data) {
-            //List all .png file names in the page
-            // console.log("THESE SOUNDS");
-// 
-            $(data).find("a:contains(" + fileextension + ")").each(function () {
-                var filename = dir + "/" + this.href.split("/").slice(-1)[0];
-                callback(filename);
-                // console.log(this.href);
-                // console.log(filename);
-            });
-            sd_count++;
-            signalLoad();
-        }
-    });
-}
+// function filesFromDir(dir,fileextension, callback){
+//     $.ajax({
+//         //This will retrieve the contents of the folder if the folder is configured as 'browsable'
+//         url: dir,
+//         success: function (data) {
+//             //List all .png file names in the page
+//             // console.log("THESE SOUNDS");
+// // 
+//             $(data).find("a:contains(" + fileextension + ")").each(function () {
+//                 var filename = dir + "/" + this.href.split("/").slice(-1)[0];
+//                 callback(filename);
+//                 // console.log(this.href);
+//                 // console.log(filename);
+//             });
+//             sd_count++;
+//             signalLoad();
+//         }
+//     });
+// }
 
 function addToSoundDict(sound_path){
     var name = sound_path.split("/").slice(-1)[0].replace(".mp3", "");
@@ -41,13 +41,27 @@ function addToSoundDict(sound_path){
 }
 
 function loadSounds(){
+    jQuery.get('./Assets/sounds/soundslist', function(data){
+        data.split("\n").forEach(function(x){
+            console.log("ASSSET", x);
+            var sf = './Assets/sounds' + x.slice(1);
+            console.log("ASSSET", sf);
+            // jQuery.get(sf, function(data){
+            addToSoundDict(sf);
+            // });
+        });
+        sounds_loaded = true;
+        signalLoad();
+        // console.log(phones_dict);
+        // handleAudio(["G","R","EH","G", 50, "AY", 50, "AE", "M", 50, "EY", 50, "K", "AH", "M", "P" ,"Y", "UW", "T", "ER"]);
+    });
     // var dir = "Assets/sounds/words";
     // var fileextension = ".mp3";
 
     // var sounds = [];
-    filesFromDir(AssetsDir+"/sounds/words/", ".mp3", addToSoundDict);
-    filesFromDir(AssetsDir+"/sounds/prompts/", ".mp3",addToSoundDict);
-    filesFromDir(AssetsDir+"/sounds/letters/", ".mp3",addToSoundDict);
+    // filesFromDir(AssetsDir+"/sounds/words/", ".mp3", addToSoundDict);
+    // filesFromDir(AssetsDir+"/sounds/prompts/", ".mp3",addToSoundDict);
+    // filesFromDir(AssetsDir+"/sounds/letters/", ".mp3",addToSoundDict);
     // console.log(sounds);
     // for (var i = 0; i < sounds.length; i++) {
     //     var sound_path = sounds[i];
@@ -147,8 +161,8 @@ function loadDefaultLetters(){
 }
 
 function signalLoad(){
-    console.log("SIGNAL LOAD", sd_count);
-    if(sd_count == 3 && phones_dict && phonetics_dict && grapheme_dict && default_phones_dict && default_letters_dict){
+    console.log("SIGNAL LOAD");
+    if(sounds_loaded && phones_dict && phonetics_dict && grapheme_dict && default_phones_dict && default_letters_dict){
         var event = new Event("PHONICS_ASSETS_LOADED");
         document.dispatchEvent(event);
         // playAudioFromText("~table");// ~it ~is ~danny 300 ~I ~am ~a ~computer 500 ~do ~not ~worry ~I ~am ~still ~here 500 ~goodbye");
