@@ -7,7 +7,7 @@ var default_phones_dict = null;
 var default_letters_dict = null;
 // var global_sounds = [];
 
-var audioDir = "Assets/sounds";
+var audioDir = "./Assets/sounds";
 
 function filesFromDir(dir,fileextension, callback){
     $.ajax({
@@ -40,9 +40,9 @@ function loadSounds(){
     // var fileextension = ".mp3";
 
     // var sounds = [];
-    filesFromDir("Assets/sounds/words", ".mp3", addToSoundDict);
-    filesFromDir("Assets/sounds/prompts", ".mp3",addToSoundDict);
-    filesFromDir("Assets/sounds/letters", ".mp3",addToSoundDict);
+    filesFromDir("./Assets/sounds/words", ".mp3", addToSoundDict);
+    filesFromDir("./Assets/sounds/prompts", ".mp3",addToSoundDict);
+    filesFromDir("./Assets/sounds/letters", ".mp3",addToSoundDict);
     // console.log(sounds);
     // for (var i = 0; i < sounds.length; i++) {
     //     var sound_path = sounds[i];
@@ -54,7 +54,7 @@ function loadSounds(){
 }
 
 function loadPhones(){
-    jQuery.get('Assets/data_dicts/cmudict-0.7b.phones', function(data){
+    jQuery.get('./Assets/data_dicts/cmudict-0.7b.phones', function(data){
         phones_dict = {};
         data.split("\n").forEach(function(x){
             //console.log(x);
@@ -70,7 +70,7 @@ function loadPhones(){
 };
 
 function loadPhonetics(){
-    jQuery.get('Assets/data_dicts/cmudict-0.7b', function(data){
+    jQuery.get('./Assets/data_dicts/cmudict-0.7b', function(data){
         phonetics_dict = {};
         data.split("\n").forEach(function(x){
             //console.log(x);
@@ -87,7 +87,7 @@ function loadPhonetics(){
 }
 
 function loadGraphemes(){
-    jQuery.get('Assets/data_dicts/grapheme_dict', function(data){
+    jQuery.get('./Assets/data_dicts/grapheme_dict', function(data){
         grapheme_dict = {};
         data.split("\n").forEach(function(x){
             //console.log(x);
@@ -105,7 +105,7 @@ function loadGraphemes(){
 }
 
 function loadDefaultPhones(){
-    jQuery.get('Assets/data_dicts/default_phones', function(data){
+    jQuery.get('./Assets/data_dicts/default_phones', function(data){
         default_phones_dict = {};
         data.split("\n").forEach(function(x){
             //console.log(x);
