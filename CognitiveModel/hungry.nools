@@ -1,0 +1,6 @@
+import("productionrules.nools");
+
+
+global problem_word = "starving";
+global problem_name = "starving";
+global word_pronunciation = ["S", "T", "AA", "R", "V", "IH0", "NG"];

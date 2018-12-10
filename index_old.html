@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <title>Redirect url in Javascript</title> 
+</head> 
+<body> 
+<script>
+	var extra = ""; 
+	if(String(window.location.href).includes("github.io")){
+		extra = "/PhonicsTutor";
+	}
+    var url= extra + "/HTML/phonetics.html?question_file=../CognitiveModel/table.nools"; 
+    window.location = url; 
+</script> 
+</body> 
+</html>

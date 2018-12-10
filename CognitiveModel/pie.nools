@@ -1,0 +1,6 @@
+import("productionrules.nools");
+
+
+global problem_word = "pie";
+global problem_name = "pie";
+global word_pronunciation = ["P", "AY1"];
